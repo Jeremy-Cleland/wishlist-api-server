@@ -19,7 +19,7 @@ class DataCollection {
     }
   }
 
-  getWish(userId)
+  getWithUserId(userId)
   {
     return this.model.findAll({ where: { userId } });
   }

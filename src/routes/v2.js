@@ -19,7 +19,7 @@ router.param('model', (req, res, next) => {
 
 router.get('/:model', bearerAuth, handleGetAll);
 /** ********************************************* */
-router.get('/:model/:id', bearerAuth, handleGetAllwish);
+router.get('/:model/:id', bearerAuth, handleGetAllWithUserId);
 /** ********************************************* */
 router.get('/:model/:id', bearerAuth, handleGetOne);
 router.post('/:model', bearerAuth, permissions('create'), handleCreate);
@@ -31,9 +31,9 @@ async function handleGetAll(req, res) {
   res.status(200).json(allRecords);
 }
 
-async function handleGetAllwish(req, res) {
+async function handleGetAllWithUserId(req, res) {
   const id = req.params.id;
-  let allRecords = await req.model.getWish(id);
+  let allRecords = await req.model.getWithUserId(id);
   res.status(200).json(allRecords);
 }
 
