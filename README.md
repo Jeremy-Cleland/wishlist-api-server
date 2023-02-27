@@ -7,6 +7,7 @@
 ### Problem Domain  
 
 Allow user to keep a database of wishlist items and items that were purchased.
+
 ### Links and Resources
 
 - [GitHub Actions ci/cd](https://github.com/villafanam/auth-api/actions)
@@ -29,13 +30,13 @@ SECRET=insertyoursecret
 
 #### Features / Routes
 
-/wishlsit
+- /wishlsit
 
-/purchase
+- /purchase
 
-/signin
+- /signin
 
-/signup
+- /signup 
 
 #### UML
 
