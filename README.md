@@ -1,3 +1,2 @@
-# wishlist-api-server
-
+#### UML
 ![UML](/assets/uml.png)
