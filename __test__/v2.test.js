@@ -28,44 +28,42 @@ afterAll(async () => {
 
 describe('v2 Routes', () => {
   it('creates a record', async() => {
-    let response = await request.post('/api/v2/food').send({
-      name: 'tacos',
-      calories: 100,
-      type: 'protein',
+    let response = await request.post('/api/v2/wishlist').send({
+      product: 'Gameboy',
+      qty: 1,
+      price: 100,
+      priority: 'medium',
+      userId: 1,
     }).set('Authorization', `Bearer ${testAdmin.token}`);
 
     expect(response.status).toEqual(201);
-    expect(response.body.name).toEqual('tacos');
+    expect(response.body.product).toEqual('Gameboy');
   });
 
-  it('gets all records', async() => {
-    let response = await request.get('/api/v2/food').set('Authorization', `Bearer ${testAdmin.token}`);
-
+  it('gets all records with userID', async() => {
+    let response = await request.get('/api/v2/wishlist/1').set('Authorization', `Bearer ${testAdmin.token}`);
+    console.log(response.body);
     expect(response.status).toEqual(200);
-    expect(response.body[0].name).toEqual('tacos');
+    expect(response.body.product).toEqual('Gameboy');
   });
 
-  it('gets a single records', async() => {
-    let response = await request.get('/api/v2/food/1').set('Authorization', `Bearer ${testAdmin.token}`);
-
-    expect(response.status).toEqual(200);
-    expect(response.body.name).toEqual('tacos');
-  });
 
   it('updates a record', async() => {
-    let response = await request.put('/api/v2/food/1').send({
-      name: 'tacos',
-      calories: 1000,
-      type: 'protein',
+    let response = await request.put('/api/v2/wishlist/1').send({
+      product: 'Gameboy',
+      qty: 2,
+      price: 200,
+      priority: 'medium',
+      userId: 1,
     }).set('Authorization', `Bearer ${testAdmin.token}`);
 
     expect(response.status).toEqual(200);
-    expect(response.body.name).toEqual('tacos');
-    expect(response.body.calories).toEqual(1000);
+    expect(response.body.qty).toEqual(2);
+    expect(response.body.price).toEqual(200);
   });
 
   it('deletes a record', async() => {
-    let response = await request.delete('/api/v2/food/1').set('Authorization', `Bearer ${testAdmin.token}`);
+    let response = await request.delete('/api/v2/wishlist/1').set('Authorization', `Bearer ${testAdmin.token}`);
 
     expect(response.status).toEqual(200);
     expect(response.body).toEqual(1);
