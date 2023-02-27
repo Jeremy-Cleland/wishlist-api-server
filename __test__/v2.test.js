@@ -44,7 +44,7 @@ describe('v2 Routes', () => {
     let response = await request.get('/api/v2/wishlist/1').set('Authorization', `Bearer ${testAdmin.token}`);
     console.log(response.body);
     expect(response.status).toEqual(200);
-    expect(response.body.product).toEqual('Gameboy');
+    expect(response.body[0].product).toEqual('Gameboy');
   });
 
 
