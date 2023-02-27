@@ -17,16 +17,16 @@ router.param('model', (req, res, next) => {
   }
 });
 
+/** ********************************************* */
+router.get('/:model/:id', bearerAuth, handleGetAllWithUserId);
+/** ********************************************* */
 router.get('/:model', bearerAuth, handleGetAll);
 router.get('/:model/:id', bearerAuth, handleGetOne);
 router.post('/:model', bearerAuth, permissions('create'), handleCreate);
 router.put('/:model/:id', bearerAuth, permissions('update'), handleUpdate);
 router.delete('/:model/:id', bearerAuth, permissions('delete'), handleDelete);
 
-/** ********************************************* */
-router.get('/:model/:id', bearerAuth, handleGetAllWithUserId);
-router.post('/:model', bearerAuth, permissions('create'), handleCreate);
-/** ********************************************* */
+
 
 
 async function handleGetAll(req, res) {
